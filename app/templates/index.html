@@ -1,0 +1,33 @@
+
+
+
+<div *ngFor="let note of note">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="jumbotron">
+				<h1>Liste des notes</h1>
+				<a routerLink="/note"><button  class="btn btn-primary">Ajouter une note</button></a>
+				<a><button  class="btn btn-primary">Ajouter une catégorie</button></a>
+				<a><button  class="btn btn-warning">Afficher les catégories</button></a>
+				<br>
+				<br>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title"><h2><b>{{note.titre}}</b></h2></h2>
+					        {{note.categorie}}
+					</div>
+					<div class="panel-body">
+						{{note.contenu}}
+						<br>
+						<br>
+						<a><button class="btn btn-danger">Supprimer la note</button></a>
+						<a><button class="btn btn-primary">Modifier la note</button></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+</div>
