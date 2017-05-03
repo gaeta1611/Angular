@@ -1,19 +1,51 @@
-
-<form>
-  <div class="jumbotron">
-  		<h1>Ajouter la note </h1>
-  </div>
-  <div class="form-group">
-    <label class="control-label required" for="form_title">Titre : </label>
-    <input type="text" id="form_title" name="form[title]" required="required" class="form-control">
+<div *ngFor="let note of emptyNote">
+    <button (click)="modifyNote(note)" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        Ajouter une note
+    </button>
     <br>
-    <label class="control-label required" for="form_content">Contenu : </label>
-    <input type="text" id="form_content" name="form[content]" required="required" class="form-control">
-    <br>
-    <label class="control-label required" for="form_categorie">Catégorie : </label>
-    <select id="form_categorie" name="form[categorie]" class="form-control"></select>
-  </div>
-
-  <button class="btn btn-primary">Annuler</button>
-  <button type="submit" id="form_save" name="form[save]" class="btn-default btn">Sauvegarder</button>
-</form>
+    <div *ngIf="display && selectedNote == note.id">
+        <br>
+        <new-note (cancelEvent)="modifyNote(note)"
+            [modifiedNote]="noteToModify">
+        </new-note>
+    </div>
+</div>
+<br>
+<div *ngFor="let note of notes">
+    <div class="note" id="{{note.id}}">
+        <div class="row">
+            <div class="well well-lg">
+                <legend>
+                    <b>{{note.title}}<br></b>
+                    {{note.categorie.name}} -
+                    {{note.date}}
+                </legend>
+                <div class="well">
+                    <div class='panel-body'>
+                        {{note.content}}
+                    </div>
+                </div>
+                <a>
+                    <button type="button" class="btn btn-primary">
+                        <span (click)="deleteNote(note)"
+                            class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </a>
+                <a>
+                    <button type="button" class="btn btn-primary">
+                        <span (click)="modifyNote(note)"
+                            class="glyphicon glyphicon-edit">
+                        </span>
+                    </button>
+                </a>
+                <div *ngIf="display && selectedNote == note.id">
+                    <br>
+                    <new-note (cancelEvent)="modifyNote(note)"
+                        [modifiedNote]="noteToModify">
+                    </new-note>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

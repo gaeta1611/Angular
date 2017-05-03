@@ -10,14 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
+var createNote_component_1 = require('./createNote.component');
+var createCategorie_component_1 = require('./createCategorie.component');
+var note_component_1 = require('./note.component');
+var categorie_component_1 = require('./categorie.component');
+var appRoutes = [
+    { path: '', redirectTo: 'note', pathMatch: 'full' },
+    { path: 'note', component: note_component_1.noteComponent },
+    { path: 'categorie', component: categorie_component_1.categorieComponent }
+];
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, router_1.RouterModule.forRoot(appRoutes)],
+            declarations: [app_component_1.AppComponent, createNote_component_1.createNoteComponent, createCategorie_component_1.createCategorieComponent, note_component_1.noteComponent, categorie_component_1.categorieComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

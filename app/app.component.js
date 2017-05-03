@@ -11,11 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
-        this.note = [{
-                "titre": "Application ",
-                "contenu": "Nous sommes entrain de creer",
-                "categorie": "hh"
-            }];
     }
     AppComponent = __decorate([
         core_1.Component({
