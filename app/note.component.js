@@ -9,8 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var notepad_service_1 = require('./notepad.service');
 var noteComponent = (function () {
-    function noteComponent() {
+    function noteComponent(notepadService) {
+        this.notepadService = notepadService;
         this.display = false;
         this.selectedNote = 0;
         this.noteToModify = null;
@@ -24,26 +26,13 @@ var noteComponent = (function () {
                     "name": ""
                 }
             }];
-        this.notes = [{
-                "title": "première note",
-                "content": "test",
-                "date": "22/03",
-                "id": 1,
-                "categorie": {
-                    "id": 1,
-                    "name": "remarque"
-                }
-            }, {
-                "title": "Seconde note",
-                "content": "test numéro 2",
-                "date": "22/04",
-                "id": 2,
-                "categorie": {
-                    "id": 2,
-                    "name": "todo"
-                }
-            }];
     }
+    //on page init, fill in the note and categorie list.
+    noteComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.notepadService.getNotes().subscribe(function (data) { _this.notes = JSON.parse(data); });
+        this.notepadService.getCategories().subscribe(function (data) { _this.categories = JSON.parse(data); });
+    };
     noteComponent.prototype.modifyNote = function (note) {
         if (this.display == true && this.selectedNote == note.id) {
             this.display = false;
@@ -59,15 +48,29 @@ var noteComponent = (function () {
         }
     };
     noteComponent.prototype.deleteNote = function (note) {
-        // TODO: Use the API tu delete the note
+        var index = this.notes.findIndex(function (n) { return (n === note); });
+        if (index != -1) {
+            this.notes.splice(index, 1);
+        }
+        this.notepadService.deleteNote(note).subscribe(function (data) { return console.log(data); });
+    };
+    noteComponent.prototype.submit = function (note) {
+        this.display = false;
+        if (this.selectedNote == 0) {
+            this.notes.push(note);
+            this.notepadService.createNote(note).subscribe(function (data) { return console.log(data); });
+        }
+        else {
+            this.notepadService.updateNote(note).subscribe(function (data) { return console.log(data); });
+        }
     };
     noteComponent = __decorate([
         core_1.Component({
             selector: 'note',
-            //template: '<new-note></new-note>',
             templateUrl: 'app/templates/note.html',
+            providers: [notepad_service_1.NotepadService],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [notepad_service_1.NotepadService])
     ], noteComponent);
     return noteComponent;
 }());

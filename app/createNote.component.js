@@ -10,24 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
+var notepad_service_1 = require('./notepad.service');
 var createNoteComponent = (function () {
-    function createNoteComponent() {
+    function createNoteComponent(notepadService) {
+        this.notepadService = notepadService;
         //pour plus tard
         this.cancelEvent = new core_1.EventEmitter();
         this.submitEvent = new core_1.EventEmitter();
-        this.categories = [{
-                "id": 2,
-                "name": "todo"
-            }, {
-                "id": 1,
-                "name": "remarque"
-            }];
     }
     createNoteComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.noteFormGroup = new forms_1.FormGroup({
             form_title: new forms_1.FormControl(),
             form_content: new forms_1.FormControl()
         });
+        this.notepadService.getCategories().subscribe(function (data) { _this.categories = JSON.parse(data); });
     };
     createNoteComponent.prototype.cancel = function () {
         this.cancelEvent.emit();
@@ -51,8 +48,9 @@ var createNoteComponent = (function () {
         core_1.Component({
             selector: 'new-note',
             templateUrl: 'app/templates/create_note.html',
+            providers: [notepad_service_1.NotepadService],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [notepad_service_1.NotepadService])
     ], createNoteComponent);
     return createNoteComponent;
 }());

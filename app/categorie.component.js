@@ -9,31 +9,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var notepad_service_1 = require('./notepad.service');
 var categorieComponent = (function () {
-    function categorieComponent() {
+    function categorieComponent(notepadService) {
+        this.notepadService = notepadService;
         this.display = false;
         this.selectedCat = 0;
         this.catToModify = null;
-        //categories : any[];
         this.emptyCat = [{
                 "id": 0,
-                "name": ""
-            }];
-        this.categories = [{
-                "id": 2,
-                "name": "remarque" }, {
-                "id": 3,
-                "name": "todo"
+                "nom": ""
             }];
     }
-    categorieComponent.prototype.SubmitEvent = function (cat) {
-        this.display = false;
+    categorieComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.notepadService.getCategories().subscribe(function (data) { _this.categories = JSON.parse(data); });
     };
-    categorieComponent.prototype.deleteCat = function (cat) {
-        var index = this.categories.findIndex(function (n) { return (n === cat); });
+    categorieComponent.prototype.submit = function (categorie) {
+        this.display = false;
+        if (this.selectedCat == 0) {
+            this.categories.push(categorie);
+            this.notepadService.createCategorie(categorie).subscribe(function (data) { return console.log(data); });
+        }
+        else {
+            this.notepadService.updateCategorie(categorie).subscribe(function (data) { return console.log(data); });
+        }
+    };
+    categorieComponent.prototype.deleteCat = function (categorie) {
+        var index = this.categories.findIndex(function (n) { return (n === categorie); });
         if (index != -1) {
             this.categories.splice(index, 1);
         }
+        this.notepadService.deleteCategorie(categorie).subscribe(function (data) { return console.log(data); });
     };
     categorieComponent.prototype.modifyCat = function (cat) {
         if (this.display == true && this.selectedCat == cat.id) {
@@ -53,8 +60,9 @@ var categorieComponent = (function () {
         core_1.Component({
             selector: 'categories',
             templateUrl: 'app/templates/categorie.html',
+            providers: [notepad_service_1.NotepadService],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [notepad_service_1.NotepadService])
     ], categorieComponent);
     return categorieComponent;
 }());
