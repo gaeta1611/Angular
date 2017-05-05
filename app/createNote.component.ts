@@ -7,7 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 
 export class createNoteComponent implements OnInit {
-  //pour plus tard
+    //pour plus tard
     @Output() cancelEvent: EventEmitter<any> = new EventEmitter<any>();
     @Output() submitEvent: EventEmitter<any> = new EventEmitter();
     @Input() modifiedNote: any;
