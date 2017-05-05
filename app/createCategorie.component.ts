@@ -2,6 +2,8 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { categorieComponent } from './categorie.component';
 
+import { Categorie } from './categorie';
+
 @Component({
     selector : 'new-cat', //selector "new-note" can be used as a html tag now
     templateUrl : 'app/templates/create_categorie.html',

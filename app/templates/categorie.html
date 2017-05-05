@@ -6,6 +6,7 @@
     <div *ngIf="display && selectedCat == cat.id">
         <br>
         <new-cat (cancelEvent)="modifyCat(cat)"
+            (submitEvent)='submit($event)'
             [modifiedCat]="catToModify">
         </new-cat>
     </div>
@@ -14,7 +15,7 @@
 <div *ngFor="let cat of categories">
     <div class="row">
         <div class="well well-lg">
-            <legend><b>{{cat.name}}</b></legend>
+            <legend><b>{{cat.nom}}</b></legend>
             <a>
                 <button type="button" class="btn btn-primary">
                     <span (click)="deleteCat(cat)"
@@ -31,6 +32,7 @@
             <div *ngIf="display && selectedCat == cat.id">
                 <br>
                 <new-cat (cancelEvent)="modifyCat(cat)"
+                (submitEvent)='submit($event)'
                     [modifiedCat]="catToModify">
                 </new-cat>
             </div>

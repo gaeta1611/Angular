@@ -16,7 +16,7 @@
     <select id="form_categorie" name="form[categorie]" [(ngModel)]="modifiedNote.categorie"
                  [ngModelOptions]="{standalone: true}" class="form-control">
                  <option *ngFor="let cat of categories"
-                    [ngValue]="cat">{{cat.name}}</option>
+                    [ngValue]="cat">{{cat.nom}}</option>
     </select>
   </div>
 

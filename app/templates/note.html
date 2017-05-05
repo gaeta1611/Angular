@@ -7,6 +7,7 @@
     <div *ngIf="display && selectedNote == note.id">
         <br>
         <new-note (cancelEvent)="modifyNote(note)"
+            (submitEvent)='submit($event)'
             [modifiedNote]="noteToModify">
         </new-note>
     </div>
@@ -18,8 +19,8 @@
             <div class="well well-lg">
                 <legend>
                     <b>{{note.title}}<br></b>
-                    {{note.categorie.name}} -
-                    {{note.date}}
+                    {{note.categorie.nom}} -
+                    {{note.date | date : 'dd-MM-yyyy'}}
                 </legend>
                 <div class="well">
                     <div class='panel-body'>
@@ -42,6 +43,7 @@
                 <div *ngIf="display && selectedNote == note.id">
                     <br>
                     <new-note (cancelEvent)="modifyNote(note)"
+                        (submitEvent)='submit($event)'
                         [modifiedNote]="noteToModify">
                     </new-note>
                 </div>
