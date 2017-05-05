@@ -11,7 +11,7 @@ export class createNoteComponent implements OnInit {
     @Output() cancelEvent: EventEmitter<any> = new EventEmitter<any>();
     @Output() submitEvent: EventEmitter<any> = new EventEmitter();
     @Input() modifiedNote: any;
-    @Input() categories: any;
+    //@Input() categories: any;
 
     noteFormGroup: FormGroup;
 

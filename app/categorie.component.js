@@ -14,6 +14,7 @@ var categorieComponent = (function () {
         this.display = false;
         this.selectedCat = 0;
         this.catToModify = null;
+        //categories : any[];
         this.emptyCat = [{
                 "id": 0,
                 "name": ""

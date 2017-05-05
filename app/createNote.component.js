@@ -47,10 +47,6 @@ var createNoteComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], createNoteComponent.prototype, "modifiedNote", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], createNoteComponent.prototype, "categories", void 0);
     createNoteComponent = __decorate([
         core_1.Component({
             selector: 'new-note',

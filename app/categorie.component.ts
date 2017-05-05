@@ -12,7 +12,7 @@ export class categorieComponent {
     selectedCat: number = 0;
     catToModify: any = null;
 
-    categories : any[];
+    //categories : any[];
 
     emptyCat = [{
         "id" : 0,
