@@ -14,20 +14,24 @@ var categorieComponent = (function () {
     function categorieComponent(notepadService) {
         this.notepadService = notepadService;
         this.display = false;
-        this.selectedCat = 0;
-        this.catToModify = null;
-        this.emptyCat = [{
+        this.selectedCategorie = 0;
+        this.categorieToModify = null;
+        this.emptyCategorie = [{
                 "id": 0,
                 "nom": ""
             }];
     }
+    //on page init, fill in the categorie list.
     categorieComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.notepadService.getCategories().subscribe(function (data) { _this.categories = JSON.parse(data); });
+        // ATTENTION, A SUPPRIMER POUR QUE CA MARCHE AVEC SYMFONY
+        this.categories = [{ "id": 1, "nom": "test" }];
+        //JUSQUE LA
     };
     categorieComponent.prototype.submit = function (categorie) {
         this.display = false;
-        if (this.selectedCat == 0) {
+        if (this.selectedCategorie == 0) {
             this.categories.push(categorie);
             this.notepadService.createCategorie(categorie).subscribe(function (data) { return console.log(data); });
         }
@@ -35,25 +39,25 @@ var categorieComponent = (function () {
             this.notepadService.updateCategorie(categorie).subscribe(function (data) { return console.log(data); });
         }
     };
-    categorieComponent.prototype.deleteCat = function (categorie) {
+    categorieComponent.prototype.deleteCategorie = function (categorie) {
         var index = this.categories.findIndex(function (n) { return (n === categorie); });
         if (index != -1) {
             this.categories.splice(index, 1);
         }
         this.notepadService.deleteCategorie(categorie).subscribe(function (data) { return console.log(data); });
     };
-    categorieComponent.prototype.modifyCat = function (cat) {
-        if (this.display == true && this.selectedCat == cat.id) {
+    categorieComponent.prototype.modifyCategorie = function (categorie) {
+        if (this.display == true && this.selectedCategorie == categorie.id) {
             this.display = false;
         }
-        else if (this.display == true && this.selectedCat != cat.id) {
-            this.selectedCat = cat.id;
-            this.catToModify = cat;
+        else if (this.display == true && this.selectedCategorie != categorie.id) {
+            this.selectedCategorie = categorie.id;
+            this.categorieToModify = categorie;
         }
         else {
             this.display = !this.display;
-            this.selectedCat = cat.id;
-            this.catToModify = cat;
+            this.selectedCategorie = categorie.id;
+            this.categorieToModify = categorie;
         }
     };
     categorieComponent = __decorate([

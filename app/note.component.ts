@@ -43,9 +43,10 @@ export class noteComponent {
         this.notepadService.getCategories().subscribe(
           data => { this.categories = JSON.parse(data); }
         )
+
     }
 
-    modifyNote(note: Note) {
+    modifyNote(note : Note) {
         if (this.display == true && this.selectedNote == note.id) {
             this.display = false;
         }

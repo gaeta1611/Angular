@@ -15,8 +15,8 @@
     <label class="control-label required" for="form_categorie">Catégorie : </label>
     <select id="form_categorie" name="form[categorie]" [(ngModel)]="modifiedNote.categorie"
                  [ngModelOptions]="{standalone: true}" class="form-control">
-                 <option *ngFor="let cat of categories"
-                    [ngValue]="cat">{{cat.nom}}</option>
+                 <option *ngFor="let categorie of categories"
+                    [ngValue]="categorie">{{categorie.nom}}</option>
     </select>
   </div>
 

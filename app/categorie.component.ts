@@ -12,18 +12,19 @@ import { Categorie } from './categorie';
 
 export class categorieComponent {
     display: boolean = false;
-    selectedCat: number = 0;
-    catToModify: any = null;
+    selectedCategorie: number = 0;
+    categorieToModify: any = null;
 
     categories : Categorie[];
 
     constructor(private notepadService : NotepadService) {}
 
-    emptyCat = [{
+    emptyCategorie = [{
         "id" : 0,
         "nom" : ""
     }]
 
+    //on page init, fill in the categorie list.
     ngOnInit() {
         this.notepadService.getCategories().subscribe(
           data => { this.categories = JSON.parse(data); }
@@ -32,7 +33,7 @@ export class categorieComponent {
 
     submit(categorie : Categorie) {
         this.display = false;
-        if (this.selectedCat == 0) {
+        if (this.selectedCategorie == 0) {
             this.categories.push(categorie);
             this.notepadService.createCategorie(categorie).subscribe(
                 data => console.log(data),
@@ -44,7 +45,7 @@ export class categorieComponent {
         }
     }
 
-    deleteCat(categorie : Categorie) {
+    deleteCategorie(categorie : Categorie) {
         let index = this.categories.findIndex((n) => (n === categorie));
         if (index != -1) {
            this.categories.splice(index, 1);
@@ -55,18 +56,18 @@ export class categorieComponent {
         );
     }
 
-    modifyCat(cat : Categorie) {
-        if (this.display == true && this.selectedCat == cat.id) {
+    modifyCategorie(categorie : Categorie) {
+        if (this.display == true && this.selectedCategorie == categorie.id) {
             this.display = false;
         }
-        else if (this.display == true && this.selectedCat != cat.id) {
-            this.selectedCat = cat.id;
-            this.catToModify = cat;
+        else if (this.display == true && this.selectedCategorie != categorie.id) {
+            this.selectedCategorie = categorie.id;
+            this.categorieToModify = categorie;
         }
         else {
             this.display = !this.display;
-            this.selectedCat = cat.id;
-            this.catToModify = cat;
+            this.selectedCategorie = categorie.id;
+            this.categorieToModify = categorie;
         }
     }
 }

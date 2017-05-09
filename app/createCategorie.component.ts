@@ -5,14 +5,14 @@ import { categorieComponent } from './categorie.component';
 import { Categorie } from './categorie';
 
 @Component({
-    selector : 'new-cat', //selector "new-note" can be used as a html tag now
+    selector : 'nouvelleCategorie', 
     templateUrl : 'app/templates/create_categorie.html',
 })
 
 export class createCategorieComponent implements OnInit {
     @Output() cancelEvent: EventEmitter<any> = new EventEmitter<any>();
     @Output() submitEvent: EventEmitter<any> = new EventEmitter();
-    @Input() modifiedCat: any;
+    @Input() modifiedCategorie: any;
 
     noteFormGroup: FormGroup;
 
@@ -27,6 +27,6 @@ export class createCategorieComponent implements OnInit {
     }
 
     submit() {
-        this.submitEvent.emit(this.modifiedCat);
+        this.submitEvent.emit(this.modifiedCategorie);
     }
 }

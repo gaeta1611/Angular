@@ -25,6 +25,9 @@ var createNoteComponent = (function () {
             form_content: new forms_1.FormControl()
         });
         this.notepadService.getCategories().subscribe(function (data) { _this.categories = JSON.parse(data); });
+        // A SUPPRIMER
+        this.categories = [{ "id": 1, "nom": "test" }];
+        //JUSQU'ICI
     };
     createNoteComponent.prototype.cancel = function () {
         this.cancelEvent.emit();
@@ -46,7 +49,7 @@ var createNoteComponent = (function () {
     ], createNoteComponent.prototype, "modifiedNote", void 0);
     createNoteComponent = __decorate([
         core_1.Component({
-            selector: 'new-note',
+            selector: 'nouvelleNote',
             templateUrl: 'app/templates/create_note.html',
             providers: [notepad_service_1.NotepadService],
         }), 

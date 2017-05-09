@@ -24,7 +24,7 @@ var createCategorieComponent = (function () {
         this.cancelEvent.emit();
     };
     createCategorieComponent.prototype.submit = function () {
-        this.submitEvent.emit(this.modifiedCat);
+        this.submitEvent.emit(this.modifiedCategorie);
     };
     __decorate([
         core_1.Output(), 
@@ -37,10 +37,10 @@ var createCategorieComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
-    ], createCategorieComponent.prototype, "modifiedCat", void 0);
+    ], createCategorieComponent.prototype, "modifiedCategorie", void 0);
     createCategorieComponent = __decorate([
         core_1.Component({
-            selector: 'new-cat',
+            selector: 'nouvelleCategorie',
             templateUrl: 'app/templates/create_categorie.html',
         }), 
         __metadata('design:paramtypes', [])

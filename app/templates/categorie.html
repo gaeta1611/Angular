@@ -1,40 +1,36 @@
-<div *ngFor="let cat of emptyCat">
-    <button (click)="modifyCat(cat)" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus"></span>
+<div *ngFor="let categorie of emptyCategorie">
+    <button (click)="modifyCategorie(categorie)" class="btn btn-primary">
         Ajouter une catégorie
     </button>
-    <div *ngIf="display && selectedCat == cat.id">
+    <div *ngIf="display && selectedCategorie == categorie.id">
         <br>
-        <new-cat (cancelEvent)="modifyCat(cat)"
+        <nouvelleCategorie (cancelEvent)="modifyCategorie(categorie)"
             (submitEvent)='submit($event)'
-            [modifiedCat]="catToModify">
-        </new-cat>
+            [modifiedCategorie]="categorieToModify">
+        </nouvelleCategorie>
     </div>
 </div>
 <br>
-<div *ngFor="let cat of categories">
-    <div class="row">
-        <div class="well well-lg">
-            <legend><b>{{cat.nom}}</b></legend>
-            <a>
-                <button type="button" class="btn btn-primary">
-                    <span (click)="deleteCat(cat)"
-                        class="glyphicon glyphicon-trash"></span>
-                </button>
-            </a>
-            <a>
-                <button type="button" class="btn btn-primary">
-                    <span (click)="modifyCat(cat)"
-                        class="glyphicon glyphicon-edit">
-                    </span>
-                </button>
-            </a>
-            <div *ngIf="display && selectedCat == cat.id">
+<div *ngFor="let categorie of categories">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+             <h1 class="panel-title"><b>{{categorie.nom}}</b></h1>
+        </div>
+        <div class="panel-body">
+            <button (click)="deleteCategorie(categorie)"
+              type="button" class="btn btn-danger">
+                Supprimer la catégorie
+            </button>
+            <button (click)="modifyCategorie(categorie)"
+              type="button" class="btn btn-primary">
+                  Modifier la catégorie
+            </button>
+            <div *ngIf="display && selectedCategorie == categorie.id">
                 <br>
-                <new-cat (cancelEvent)="modifyCat(cat)"
-                (submitEvent)='submit($event)'
-                    [modifiedCat]="catToModify">
-                </new-cat>
+                <nouvelleCategorie (cancelEvent)="modifyCategorie(categorie)"
+                  (submitEvent)='submit($event)'
+                    [modifiedCategorie]="categorieToModify">
+                </nouvelleCategorie>
             </div>
         </div>
     </div>

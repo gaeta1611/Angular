@@ -5,7 +5,7 @@ import { NotepadService } from './notepad.service';
 import { Categorie } from './categorie';
 
 @Component({
-    selector : 'new-note', //selector "new-note" can be used as a html tag now
+    selector : 'nouvelleNote',
     templateUrl : 'app/templates/create_note.html',
     providers : [NotepadService],
 })
