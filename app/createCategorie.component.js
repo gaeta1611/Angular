@@ -26,6 +26,14 @@ var createCategorieComponent = (function () {
     createCategorieComponent.prototype.submit = function () {
         this.submitEvent.emit(this.modifiedCategorie);
     };
+    createCategorieComponent.prototype.checkContent = function () {
+        if (this.modifiedCategorie && this.modifiedCategorie.nom && this.modifiedCategorie.nom.length >= 4) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)

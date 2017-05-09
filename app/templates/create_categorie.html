@@ -1,15 +1,15 @@
 
 <form>
   <div class="jumbotron">
-  		<h1>Ajouter une catégorie </h1>
+    <h1>Ajouter une catégorie </h1>
   </div>
   <div class="form-group">
     <label class="control-label required" for="form_title">Nom de la catégorie : </label>
     <input type="text" id="form_title" name="form[title]" [(ngModel)]="modifiedCategorie.nom"
-        [ngModelOptions]="{standalone: true}" required="required" class="form-control">
+    [ngModelOptions]="{standalone: true}" required="required" class="form-control">
     <br>
   </div>
 
   <button (click)="cancel()" class="btn btn-primary">Annuler</button>
-  <button (click)="submit()" class="btn-default btn">Sauvegarder</button>
+  <button [disabled]="checkContent()"(click)="submit()" class="btn-default btn">Sauvegarder</button>
 </form>

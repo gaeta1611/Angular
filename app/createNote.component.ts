@@ -41,4 +41,12 @@ export class createNoteComponent implements OnInit {
     submit() {
         this.submitEvent.emit(this.modifiedNote);
     }
+
+    checkContent(){
+        if(this.modifiedNote && this.modifiedNote.title && this.modifiedNote.title.length >=4){
+          return false;
+        }
+        else{
+          return true;
+        }
 }

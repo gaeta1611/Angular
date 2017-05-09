@@ -1,25 +1,24 @@
-
 <form>
   <div class="jumbotron">
-  		<h1>Ajouter la note </h1>
+      <h1>Ajouter la note </h1>
   </div>
   <div class="form-group">
-    <label class="control-label required" for="form_title">Titre : </label>
-    <input type="text" id="form_title" name="form[title]" [(ngModel)]="modifiedNote.title"
-                 [ngModelOptions]="{standalone: true}" required="required" class="form-control">
-    <br>
-    <label class="control-label required" for="form_content">Contenu : </label>
-    <input type="text" id="form_content" name="form[content]" [(ngModel)]="modifiedNote.content"
-                 [ngModelOptions]="{standalone: true}" required="required" class="form-control">
-    <br>
-    <label class="control-label required" for="form_categorie">Catégorie : </label>
-    <select id="form_categorie" name="form[categorie]" [(ngModel)]="modifiedNote.categorie"
-                 [ngModelOptions]="{standalone: true}" class="form-control">
-                 <option *ngFor="let categorie of categories"
-                    [ngValue]="categorie">{{categorie.nom}}</option>
-    </select>
+      <label class="control-label required" for="form_title">Titre : </label>
+      <input type="text" id="form_title" name="form[title]" [(ngModel)]="modifiedNote.title"
+      [ngModelOptions]="{standalone: true}" required="required" class="form-control">
+      <br>
+      <label class="control-label required" for="form_content">Contenu : </label>
+      <input type="text" id="form_content" name="form[content]" [(ngModel)]="modifiedNote.content"
+      [ngModelOptions]="{standalone: true}" required="required" class="form-control">
+      <br>
+      <label class="control-label required" for="form_categorie">Catégorie : </label>
+      <select id="form_categorie" name="form[categorie]" [(ngModel)]="modifiedNote.categorie"
+      [ngModelOptions]="{standalone: true}" class="form-control">
+      <option *ngFor="let categorie of categories"
+      [ngValue]="categorie">{{categorie.nom}}</option>
+      </select>
   </div>
 
   <button (click)="cancel()" class="btn btn-primary">Annuler</button>
-  <button (click)="submit()" type="submit" id="form_save" class="btn-default btn">Sauvegarder</button>
+  <button [disabled]="checkContent()" (click)="submit()" type="submit" id="form_save" class="btn-default btn">Sauvegarder</button>
 </form>

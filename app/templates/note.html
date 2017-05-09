@@ -6,8 +6,8 @@
     <div *ngIf="display && selectedNote == note.id">
         <br>
         <nouvelleNote (cancelEvent)="modifyNote(note)"
-            (submitEvent)='submit($event)'
-            [modifiedNote]="noteToModify">
+        (submitEvent)='submit($event)'
+        [modifiedNote]="noteToModify">
         </nouvelleNote>
     </div>
 </div>
@@ -16,10 +16,9 @@
     <div class="note" id="{{note.id}}">
         <div class="panel panel-primary">
             <div class="panel-heading">
-              <h2 class="panel-title"><h3><b>{{note.title}}</b></h3></h2>
-
-              {{note.categorie.nom}} -
-              {{note.date | date : 'dd-MM-yyyy'}}
+                <h2 class="panel-title"><h3><b>{{note.title}}</b></h3></h2>
+                {{note.categorie.nom}} -
+                {{note.date | date : 'dd-MM-yyyy'}}
             </div>
             <div class='panel-body'>
                 {{note.content}}
@@ -33,13 +32,13 @@
                 </button>
                 <div *ngIf="display && selectedNote == note.id">
                     <br>
-                    <nouvelleNote (cancelEvent)="modifyNote(note)"
-                        (submitEvent)='submit($event)'
-                        [modifiedNote]="noteToModify">
+                    <nouvelleNote
+                    (cancelEvent)="modifyNote(note)"
+                    (submitEvent)='submit($event)'
+                    [modifiedNote]="noteToModify">
                     </nouvelleNote>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

@@ -25,15 +25,20 @@ var createNoteComponent = (function () {
             form_content: new forms_1.FormControl()
         });
         this.notepadService.getCategories().subscribe(function (data) { _this.categories = JSON.parse(data); });
-        // A SUPPRIMER
-        this.categories = [{ "id": 1, "nom": "test" }];
-        //JUSQU'ICI
     };
     createNoteComponent.prototype.cancel = function () {
         this.cancelEvent.emit();
     };
     createNoteComponent.prototype.submit = function () {
         this.submitEvent.emit(this.modifiedNote);
+    };
+    createNoteComponent.prototype.checkContent = function () {
+        if (this.modifiedNote && this.modifiedNote.title && this.modifiedNote.title.length >= 4) {
+            return false;
+        }
+        else {
+            return true;
+        }
     };
     __decorate([
         core_1.Output(), 

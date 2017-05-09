@@ -25,9 +25,6 @@ var categorieComponent = (function () {
     categorieComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.notepadService.getCategories().subscribe(function (data) { _this.categories = JSON.parse(data); });
-        // ATTENTION, A SUPPRIMER POUR QUE CA MARCHE AVEC SYMFONY
-        this.categories = [{ "id": 1, "nom": "test" }];
-        //JUSQUE LA
     };
     categorieComponent.prototype.submit = function (categorie) {
         this.display = false;

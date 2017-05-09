@@ -32,19 +32,6 @@ var noteComponent = (function () {
         var _this = this;
         this.notepadService.getNotes().subscribe(function (data) { _this.notes = JSON.parse(data); });
         this.notepadService.getCategories().subscribe(function (data) { _this.categories = JSON.parse(data); });
-        // ATTENTION, A SUPPRIMER POUR QUE CA MARCHE AVEC SYMFONY
-        this.categories = [{ "id": 1, "nom": "test" }];
-        this.notes = [{
-                "id": 1,
-                "title": "ddf",
-                "content": "cece",
-                "date": 22114444,
-                "categorie": {
-                    "id": 1,
-                    "nom": "test"
-                }
-            }];
-        //JUSQUE LA
     };
     noteComponent.prototype.modifyNote = function (note) {
         if (this.display == true && this.selectedNote == note.id) {

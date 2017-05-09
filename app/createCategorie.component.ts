@@ -5,7 +5,7 @@ import { categorieComponent } from './categorie.component';
 import { Categorie } from './categorie';
 
 @Component({
-    selector : 'nouvelleCategorie', 
+    selector : 'nouvelleCategorie',
     templateUrl : 'app/templates/create_categorie.html',
 })
 
@@ -28,5 +28,13 @@ export class createCategorieComponent implements OnInit {
 
     submit() {
         this.submitEvent.emit(this.modifiedCategorie);
+    }
+    checkContent(){
+        if(this.modifiedCategorie && this.modifiedCategorie.nom && this.modifiedCategorie.nom.length >=4){
+          return false;
+        }
+        else{
+          return true;
+        }
     }
 }

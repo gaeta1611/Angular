@@ -1,12 +1,14 @@
 <div *ngFor="let categorie of emptyCategorie">
-    <button (click)="modifyCategorie(categorie)" class="btn btn-primary">
-        Ajouter une catégorie
+    <button (click)="modifyCategorie(categorie)"
+    class="btn btn-primary">
+    Ajouter une catégorie
     </button>
     <div *ngIf="display && selectedCategorie == categorie.id">
         <br>
-        <nouvelleCategorie (cancelEvent)="modifyCategorie(categorie)"
-            (submitEvent)='submit($event)'
-            [modifiedCategorie]="categorieToModify">
+        <nouvelleCategorie 
+        (cancelEvent)="modifyCategorie(categorie)"
+        (submitEvent)='submit($event)'
+        [modifiedCategorie]="categorieToModify">
         </nouvelleCategorie>
     </div>
 </div>
@@ -14,22 +16,23 @@
 <div *ngFor="let categorie of categories">
     <div class="panel panel-primary">
         <div class="panel-heading">
-             <h1 class="panel-title"><b>{{categorie.nom}}</b></h1>
+            <h1 class="panel-title"><b>{{categorie.nom}}</b></h1>
         </div>
         <div class="panel-body">
             <button (click)="deleteCategorie(categorie)"
-              type="button" class="btn btn-danger">
-                Supprimer la catégorie
+            type="button" class="btn btn-danger">
+            Supprimer la catégorie
             </button>
             <button (click)="modifyCategorie(categorie)"
-              type="button" class="btn btn-primary">
-                  Modifier la catégorie
+            type="button" class="btn btn-primary">
+            Modifier la catégorie
             </button>
             <div *ngIf="display && selectedCategorie == categorie.id">
                 <br>
-                <nouvelleCategorie (cancelEvent)="modifyCategorie(categorie)"
-                  (submitEvent)='submit($event)'
-                    [modifiedCategorie]="categorieToModify">
+                <nouvelleCategorie 
+                (cancelEvent)="modifyCategorie(categorie)"
+                (submitEvent)='submit($event)'
+                [modifiedCategorie]="categorieToModify">
                 </nouvelleCategorie>
             </div>
         </div>
